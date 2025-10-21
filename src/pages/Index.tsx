@@ -1,13 +1,85 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { StatCard } from "@/components/dashboard/StatCard";
+import { AttendanceChart } from "@/components/dashboard/AttendanceChart";
+import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
+import { RecentActivity } from "@/components/dashboard/RecentActivity";
+import { Users, GraduationCap, Calendar, DollarSign, TrendingUp, BookOpen } from "lucide-react";
 
 const Index = () => {
+  const [userRole, setUserRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+
+  const getStatsForRole = () => {
+    switch (userRole) {
+      case "admin":
+        return [
+          { title: "Total Students", value: "1,248", change: "+5.2% from last month", changeType: "positive" as const, icon: GraduationCap, iconColor: "bg-primary" },
+          { title: "Total Staff", value: "156", change: "+2.1% from last month", changeType: "positive" as const, icon: Users, iconColor: "bg-success" },
+          { title: "Attendance Rate", value: "92.4%", change: "+1.8% from last week", changeType: "positive" as const, icon: Calendar, iconColor: "bg-warning" },
+          { title: "Fee Collection", value: "$124.5K", change: "+12.3% from last month", changeType: "positive" as const, icon: DollarSign, iconColor: "bg-accent" },
+        ];
+      case "teacher":
+        return [
+          { title: "My Classes", value: "6", change: "Active this semester", changeType: "neutral" as const, icon: BookOpen, iconColor: "bg-primary" },
+          { title: "Total Students", value: "180", change: "Across all classes", changeType: "neutral" as const, icon: GraduationCap, iconColor: "bg-success" },
+          { title: "Attendance Today", value: "94.2%", change: "+2.1% from yesterday", changeType: "positive" as const, icon: Calendar, iconColor: "bg-warning" },
+          { title: "Pending Grading", value: "24", change: "Assignments to review", changeType: "neutral" as const, icon: TrendingUp, iconColor: "bg-accent" },
+        ];
+      case "student":
+        return [
+          { title: "Enrolled Courses", value: "8", change: "This semester", changeType: "neutral" as const, icon: BookOpen, iconColor: "bg-primary" },
+          { title: "Attendance", value: "96.5%", change: "+1.2% from last month", changeType: "positive" as const, icon: Calendar, iconColor: "bg-success" },
+          { title: "Overall GPA", value: "3.85", change: "+0.15 from last term", changeType: "positive" as const, icon: TrendingUp, iconColor: "bg-warning" },
+          { title: "Pending Assignments", value: "3", change: "Due this week", changeType: "neutral" as const, icon: GraduationCap, iconColor: "bg-accent" },
+        ];
+      case "parent":
+        return [
+          { title: "Children Enrolled", value: "2", change: "Active students", changeType: "neutral" as const, icon: GraduationCap, iconColor: "bg-primary" },
+          { title: "Avg. Attendance", value: "94.8%", change: "This month", changeType: "positive" as const, icon: Calendar, iconColor: "bg-success" },
+          { title: "Avg. Performance", value: "B+", change: "This semester", changeType: "positive" as const, icon: TrendingUp, iconColor: "bg-warning" },
+          { title: "Pending Fees", value: "$2,400", change: "Due by end of month", changeType: "neutral" as const, icon: DollarSign, iconColor: "bg-accent" },
+        ];
+      default:
+        return [];
+    }
+  };
+
+  const stats = getStatsForRole();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <DashboardLayout userRole={userRole} onRoleChange={setUserRole}>
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            {userRole === "admin" && "Administrator Dashboard"}
+            {userRole === "teacher" && "Teacher Dashboard"}
+            {userRole === "student" && "Student Dashboard"}
+            {userRole === "parent" && "Parent Dashboard"}
+          </h1>
+          <p className="text-muted-foreground">
+            Welcome back! Here's what's happening with your school today.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <StatCard key={index} {...stat} />
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <AttendanceChart />
+          <PerformanceChart />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <PerformanceChart />
+          </div>
+          <RecentActivity />
+        </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
