@@ -48,30 +48,38 @@ const getMenuItems = (role: string) => {
 
   const teacherItems = [
     { title: "Dashboard", icon: LayoutDashboard, url: "/" },
-    { title: "My Classes", icon: GraduationCap, url: "/classes" },
+    { title: "My Students", icon: GraduationCap, url: "/students" },
     { title: "Attendance", icon: Calendar, url: "/attendance" },
-    { title: "Assignments", icon: ClipboardList, url: "/assignments" },
-    { title: "Grades", icon: FileText, url: "/grades" },
+    { title: "Academics", icon: ClipboardList, url: "/academics" },
+    { title: "Exams", icon: FileText, url: "/exams" },
+    { title: "Library", icon: BookOpen, url: "/library" },
     { title: "Messages", icon: MessageSquare, url: "/messages" },
+    { title: "Analytics", icon: BarChart3, url: "/analytics" },
+    { title: "Settings", icon: Settings, url: "/settings" },
   ];
 
   const studentItems = [
     { title: "Dashboard", icon: LayoutDashboard, url: "/" },
-    { title: "My Courses", icon: BookOpen, url: "/courses" },
-    { title: "Assignments", icon: ClipboardList, url: "/assignments" },
-    { title: "Grades", icon: FileText, url: "/grades" },
+    { title: "My Courses", icon: BookOpen, url: "/academics" },
     { title: "Attendance", icon: Calendar, url: "/attendance" },
+    { title: "Exams", icon: FileText, url: "/exams" },
     { title: "Library", icon: BookOpen, url: "/library" },
+    { title: "Transport", icon: Bus, url: "/transport" },
     { title: "Messages", icon: MessageSquare, url: "/messages" },
+    { title: "Settings", icon: Settings, url: "/settings" },
   ];
 
   const parentItems = [
     { title: "Dashboard", icon: LayoutDashboard, url: "/" },
-    { title: "Child's Progress", icon: BarChart3, url: "/progress" },
+    { title: "Child's Progress", icon: BarChart3, url: "/analytics" },
     { title: "Attendance", icon: Calendar, url: "/attendance" },
-    { title: "Grades", icon: FileText, url: "/grades" },
-    { title: "Fees", icon: DollarSign, url: "/fees" },
+    { title: "Academics", icon: ClipboardList, url: "/academics" },
+    { title: "Exams", icon: FileText, url: "/exams" },
+    { title: "Finance", icon: DollarSign, url: "/finance" },
+    { title: "Library", icon: BookOpen, url: "/library" },
+    { title: "Transport", icon: Bus, url: "/transport" },
     { title: "Messages", icon: MessageSquare, url: "/messages" },
+    { title: "Settings", icon: Settings, url: "/settings" },
   ];
 
   switch (role) {
