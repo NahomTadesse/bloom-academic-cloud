@@ -4,6 +4,15 @@ import { StatCard } from "@/components/dashboard/StatCard";
 import { AttendanceChart } from "@/components/dashboard/AttendanceChart";
 import { PerformanceChart } from "@/components/dashboard/PerformanceChart";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
+import { TeacherAttendanceChart } from "@/components/dashboard/teacher/TeacherAttendanceChart";
+import { TeacherPerformanceChart } from "@/components/dashboard/teacher/TeacherPerformanceChart";
+import { TeacherRecentActivity } from "@/components/dashboard/teacher/TeacherRecentActivity";
+import { StudentPerformanceChart } from "@/components/dashboard/student/StudentPerformanceChart";
+import { StudentGradesChart } from "@/components/dashboard/student/StudentGradesChart";
+import { StudentRecentActivity } from "@/components/dashboard/student/StudentRecentActivity";
+import { ParentPerformanceChart } from "@/components/dashboard/parent/ParentPerformanceChart";
+import { ParentAttendanceChart } from "@/components/dashboard/parent/ParentAttendanceChart";
+import { ParentRecentActivity } from "@/components/dashboard/parent/ParentRecentActivity";
 import { Users, GraduationCap, Calendar, DollarSign, TrendingUp, BookOpen } from "lucide-react";
 
 const Index = () => {
@@ -69,17 +78,69 @@ const Index = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <AttendanceChart />
-          <PerformanceChart />
-        </div>
+        {userRole === "admin" && (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <AttendanceChart />
+              <PerformanceChart />
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <div className="lg:col-span-2">
-            <PerformanceChart />
-          </div>
-          <RecentActivity />
-        </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="lg:col-span-2">
+                <PerformanceChart />
+              </div>
+              <RecentActivity />
+            </div>
+          </>
+        )}
+
+        {userRole === "teacher" && (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <TeacherAttendanceChart />
+              <TeacherPerformanceChart />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="lg:col-span-2">
+                <TeacherPerformanceChart />
+              </div>
+              <TeacherRecentActivity />
+            </div>
+          </>
+        )}
+
+        {userRole === "student" && (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <StudentPerformanceChart />
+              <StudentGradesChart />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="lg:col-span-2">
+                <StudentGradesChart />
+              </div>
+              <StudentRecentActivity />
+            </div>
+          </>
+        )}
+
+        {userRole === "parent" && (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <ParentPerformanceChart />
+              <ParentAttendanceChart />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="lg:col-span-2">
+                <ParentPerformanceChart />
+              </div>
+              <ParentRecentActivity />
+            </div>
+          </>
+        )}
       </div>
     </DashboardLayout>
   );
