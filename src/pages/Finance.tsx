@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +31,7 @@ const expenses = [
 ];
 
 const Finance = () => {
-  const [userRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
 
   const totalCollected = feeRecords.reduce((sum, record) => sum + record.paid, 0);
   const totalPending = feeRecords.reduce((sum, record) => sum + record.pending, 0);

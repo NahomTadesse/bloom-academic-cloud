@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { AttendanceChart } from "@/components/dashboard/AttendanceChart";
@@ -16,7 +16,7 @@ import { ParentRecentActivity } from "@/components/dashboard/parent/ParentRecent
 import { Users, GraduationCap, Calendar, DollarSign, TrendingUp, BookOpen } from "lucide-react";
 
 const Index = () => {
-  const [userRole, setUserRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
 
   const getStatsForRole = () => {
     switch (userRole) {

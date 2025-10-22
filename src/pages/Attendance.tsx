@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,7 +35,7 @@ const attendanceData = [
 ];
 
 const Attendance = () => {
-  const [userRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [selectedClass, setSelectedClass] = useState("10-A");
 

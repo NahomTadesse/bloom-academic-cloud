@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,7 +30,7 @@ const borrowedBooks = [
 ];
 
 const Library = () => {
-  const [userRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredBooks = books.filter(

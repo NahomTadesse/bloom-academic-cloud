@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,7 +28,7 @@ const vehicles = [
 ];
 
 const Transport = () => {
-  const [userRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
 
   const getStatusBadge = (status: string) => {
     switch (status) {

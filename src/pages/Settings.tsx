@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRole } from "@/contexts/RoleContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { Settings as SettingsIcon, Bell, Shield, User, Building } from "lucide-react";
 
 const Settings = () => {
-  const [userRole] = useState<"admin" | "teacher" | "student" | "parent">("admin");
+  const { userRole, setUserRole } = useRole();
 
   return (
     <DashboardLayout userRole={userRole}>
