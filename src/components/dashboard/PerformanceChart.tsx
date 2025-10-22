@@ -11,7 +11,7 @@ const data = [
 
 export const PerformanceChart = () => {
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-card hover:shadow-lg transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">Academic Performance</CardTitle>
       </CardHeader>

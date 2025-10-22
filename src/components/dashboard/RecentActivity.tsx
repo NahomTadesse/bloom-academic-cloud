@@ -61,21 +61,21 @@ export const RecentActivity = () => {
   };
 
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-card hover:shadow-lg transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {activities.map((activity) => (
-            <div key={activity.id} className="flex items-start gap-4 pb-4 last:pb-0 border-b last:border-0 border-border">
-              <div className={`p-2 rounded-lg bg-muted ${getIconColor(activity.type)}`}>
+            <div key={activity.id} className="flex items-start gap-4 pb-4 last:pb-0 border-b last:border-0 border-border transition-all duration-300 hover:bg-muted/50 hover:px-3 hover:-mx-3 rounded-lg">
+              <div className={`p-2 rounded-lg bg-muted ${getIconColor(activity.type)} transition-transform duration-300 hover:scale-110`}>
                 <activity.icon className="h-4 w-4" />
               </div>
               <div className="flex-1 space-y-1">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-sm font-medium text-foreground">{activity.title}</p>
+                    <p className="text-sm font-medium text-foreground transition-colors duration-300">{activity.title}</p>
                     <p className="text-sm text-muted-foreground">{activity.description}</p>
                   </div>
                   {getTypeBadge(activity.type)}

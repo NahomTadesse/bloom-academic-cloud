@@ -130,15 +130,15 @@ export const Sidebar = ({ userRole }: SidebarProps) => {
                       to={item.url}
                       end={item.url === "/"}
                       className={({ isActive }) =>
-                        `flex items-center gap-3 px-6 py-3 transition-colors ${
+                        `flex items-center gap-3 px-6 py-3 transition-all duration-300 rounded-lg ${
                           isActive
                             ? "bg-sidebar-accent text-sidebar-primary font-medium"
-                            : "text-sidebar-foreground hover:bg-sidebar-accent/50"
+                            : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:translate-x-1"
                         }`
                       }
                     >
-                      <item.icon className="h-5 w-5 shrink-0" />
-                      {open && <span>{item.title}</span>}
+                      <item.icon className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                      {open && <span className="transition-all duration-300">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

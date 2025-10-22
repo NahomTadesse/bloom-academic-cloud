@@ -12,7 +12,7 @@ const data = [
 
 export const AttendanceChart = () => {
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-card hover:shadow-lg transition-all duration-300">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">Weekly Attendance</CardTitle>
       </CardHeader>
